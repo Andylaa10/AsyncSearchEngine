@@ -1,0 +1,59 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  console-search:
+    build:
+      context: "C:\\Users\\andyl\\Downloads\\SearchEngine"
+      dockerfile: "ConsoleSearch/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net7.0/ConsoleSearch.dll"
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "consolesearch:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\andyl\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\andyl\\Downloads\\SearchEngine\\ConsoleSearch:/app:rw"
+    - "C:\\Users\\andyl\\Downloads\\SearchEngine:/src:rw"
+    working_dir: "/app"
+  indexer:
+    build:
+      context: "C:\\Users\\andyl\\Downloads\\SearchEngine"
+      dockerfile: "Indexer/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net7.0/Indexer.dll"
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "indexer:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\andyl\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\andyl\\Downloads\\SearchEngine\\Indexer:/app:rw"
+    - "C:\\Users\\andyl\\Downloads\\SearchEngine:/src:rw"
+    working_dir: "/app"
+  word-service:
+    build:
+      context: "C:\\Users\\andyl\\Downloads\\SearchEngine"
+      dockerfile: "WordService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net7.0/WordService.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "wordservice:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\andyl\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\andyl\\Downloads\\SearchEngine\\WordService:/app:rw"
+    - "C:\\Users\\andyl\\Downloads\\SearchEngine:/src:rw"
+    working_dir: "/app"
